@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportAbsensi" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8b2be7b8-ee09-40a5-83bc-2edd0fa1ee4c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FAEBD7">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFE4BF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue()%2==0)]]></conditionExpression>
+			<style backcolor="#FFF8EF"/>
+		</conditionalStyle>
+	</style>
+	<subDataset name="New Dataset 1" uuid="f468eb90-018f-4a60-91ba-f1af9e5f45b6"/>
+	<subDataset name="Table Dataset 1" uuid="2708d1b6-b0a9-4626-adce-d2f846ee340c"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     absensi.`no_abs` AS absensi_no_abs,
+     absensi.`tgl_absen` AS absensi_tgl_absen,
+     absensi.`sts_absen` AS absensi_sts_absen,
+     absensi.`kls_absen` AS absensi_kls_absen,
+     absensi.`thn_ajar` AS absensi_thn_ajar,
+     absensi.`semester` AS absensi_semester,
+     absensi.`nis` AS absensi_nis,
+     absensi.`nm_siswa` AS absensi_nm_siswa
+FROM
+     `absensi` absensi]]>
+	</queryString>
+	<field name="absensi_no_abs" class="java.lang.String"/>
+	<field name="absensi_tgl_absen" class="java.lang.String"/>
+	<field name="absensi_sts_absen" class="java.lang.String"/>
+	<field name="absensi_kls_absen" class="java.lang.String"/>
+	<field name="absensi_thn_ajar" class="java.lang.String"/>
+	<field name="absensi_semester" class="java.lang.String"/>
+	<field name="absensi_nis" class="java.lang.String"/>
+	<field name="absensi_nm_siswa" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" uuid="ec2b7764-84ec-4a2b-b120-71d418540862"/>
+				<textElement textAlignment="Center">
+					<font size="36"/>
+				</textElement>
+				<text><![CDATA[LAPORAN ABSENSI]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="69" height="20" uuid="ea7f747f-f0ff-4d92-916e-51f3c48eb577"/>
+				<text><![CDATA[No Absensi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="69" y="0" width="69" height="20" uuid="1cc7ea43-c59f-42b3-a16b-acdeaadfb7e7"/>
+				<text><![CDATA[Tanggal Absensi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="0" width="69" height="20" uuid="8f3c6afd-20f8-4df3-9a94-4c2454a89b6f"/>
+				<text><![CDATA[Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="0" width="69" height="20" uuid="a7b26ab7-5b5f-42bc-82d6-a03c7ab491ee"/>
+				<text><![CDATA[Kelas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="0" width="69" height="20" uuid="f670a897-509c-413c-8371-d0eb7fd1819c"/>
+				<text><![CDATA[Tahun Ajaran]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="345" y="0" width="69" height="20" uuid="9f174005-7fcc-4a3c-aec9-55e4bbc56d1c"/>
+				<text><![CDATA[Semester]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="0" width="69" height="20" uuid="45ddecb5-53fd-4ee1-a33d-ffb3d1034d5a"/>
+				<text><![CDATA[NIS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="483" y="0" width="69" height="20" uuid="75231c49-c9fb-4dd9-9212-a56cce9dfc7b"/>
+				<text><![CDATA[Nama SIswa]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="69" height="20" uuid="e46d1f63-2e2d-46c2-8394-fa67c8ebfba8"/>
+				<textFieldExpression><![CDATA[$F{absensi_no_abs}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="69" y="0" width="69" height="20" uuid="30f6155a-283c-4a6e-9e33-ca0009a56033"/>
+				<textFieldExpression><![CDATA[$F{absensi_tgl_absen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="0" width="69" height="20" uuid="e8236041-b019-4205-99a3-dfde09e26481"/>
+				<textFieldExpression><![CDATA[$F{absensi_sts_absen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="207" y="0" width="69" height="20" uuid="c9870654-b2d9-4abc-92c1-ad7eb2c625a5"/>
+				<textFieldExpression><![CDATA[$F{absensi_kls_absen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="69" height="20" uuid="20449b08-dda4-4408-972f-e529461e0d7c"/>
+				<textFieldExpression><![CDATA[$F{absensi_thn_ajar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="345" y="0" width="69" height="20" uuid="98704b70-8486-401c-a0ca-ae4d33c382ad"/>
+				<textFieldExpression><![CDATA[$F{absensi_semester}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="0" width="69" height="20" uuid="1420de7b-519b-42b5-8866-cf80dfa602fa"/>
+				<textFieldExpression><![CDATA[$F{absensi_nis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="483" y="0" width="69" height="20" uuid="eb720df6-c5b6-4423-bded-54247d080aa1"/>
+				<textFieldExpression><![CDATA[$F{absensi_nm_siswa}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
